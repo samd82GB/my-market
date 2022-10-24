@@ -16,9 +16,9 @@ public class ProductRepository {
     @PostConstruct
     public void init() {
         products = new ArrayList<>(Arrays.asList(
-                new Product(1L, "Smartphone", 15000),
-                new Product(2L, "Fax", 25000),
-                new Product(3L, "PC", 35000)
+                new Product(1L, "Smartphone", 15000F),
+                new Product(2L, "Fax", 25000F),
+                new Product(3L, "PC", 35000F)
         ));
     }
 
@@ -31,4 +31,7 @@ public class ProductRepository {
         return products;
     }
 
+    public void addProduct(Product product) {
+        products.add(product);
+    }
 }

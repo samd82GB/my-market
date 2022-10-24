@@ -11,7 +11,15 @@ public class Product {
 
     private Long id;
     private String title;
-    private float cost;
+    private Float cost;
+
+    public Float getScore() {
+        return cost;
+    }
+
+    public void setScore(Float cost) {
+        this.cost = cost;
+    }
 
 
 }

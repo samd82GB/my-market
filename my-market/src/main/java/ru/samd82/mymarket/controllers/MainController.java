@@ -3,20 +3,21 @@ package ru.samd82.mymarket.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.samd82.mymarket.dto.Product;
+import ru.samd82.mymarket.repo.ProductRepository;
 import ru.samd82.mymarket.services.ProductService;
 
+import java.util.List;
 
-@Controller
+
+@RestController
 @RequiredArgsConstructor
 public class MainController {
 
 
     private final ProductService service;
+    private final ProductRepository repository;
     // http://localhost:8189/app
 
     // http://localhost:8189/app/hello
@@ -68,5 +69,18 @@ public class MainController {
         model.addAttribute("productsList", service.getAllProducts());
         return "product.html";
     }
+    @GetMapping("/products/all")
+    public List<Product> getTest(){
+        return service.getAllProducts();
+    }
 
+    @GetMapping("/products/change_score")
+    public void changeScore(@RequestParam Long productId, @RequestParam Float delta){
+        service.changeCost(productId, delta);
+    }
+
+    @PostMapping("/products/add")
+    public void addClientPost(@RequestBody Product product){
+        repository.addProduct(product);
+    }
 }
