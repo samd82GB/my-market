@@ -1,6 +1,7 @@
 package ru.samd82.mymarket.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,17 +16,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
 
-
+    @Autowired
     private final ProductService service;
+    @Autowired
     private final ProductRepository repository;
     // http://localhost:8189/app
 
     // http://localhost:8189/app/hello
-   @GetMapping("/hello")
-    @ResponseBody
-    public String hello(){
-        return "<h1>Hello autumn market!</h1>";
-    }
+//   @GetMapping("/hello")
+//    public String hello(){
+//        return "<h1>Hello autumn market!</h1>";
+//    }
 
    /*  //http://localhost:8189/app/buy
     @GetMapping("/buy")
@@ -58,24 +59,25 @@ public class MainController {
 //        return "index.html";
 //    }
 
-    @GetMapping("/product")
-    public String product (Model model, @RequestParam Long id){
-        model.addAttribute("productFront", service.getProduct(id) );
-        return "index.html";
-    }
+//    @GetMapping("/product")
+//    public String product (Model model, @RequestParam Long id){
+//        model.addAttribute("productFront", service.getProduct(id) );
+//        return "index.html";
+//    }
+//
+//    @GetMapping("/allproducts")
+//    public String getAllProducts(Model model){
+//        model.addAttribute("productsList", service.getAllProducts());
+//        return "product.html";
+//    }
 
-    @GetMapping("/allproducts")
-    public String getAllProducts(Model model){
-        model.addAttribute("productsList", service.getAllProducts());
-        return "product.html";
-    }
     @GetMapping("/products/all")
     public List<Product> getTest(){
         return service.getAllProducts();
     }
 
-    @GetMapping("/products/change_score")
-    public void changeScore(@RequestParam Long productId, @RequestParam Float delta){
+    @GetMapping("/products/change_cost")
+    public void changeCost(@RequestParam Long productId, @RequestParam Integer delta){
         service.changeCost(productId, delta);
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductService {
-
+    @Autowired
     private final ProductRepository repository;
 
     public Product getProduct(Long id){
@@ -22,9 +22,9 @@ public class ProductService {
         return repository.getProducts();
     }
 
-    public void changeCost(Long id, Float cost){
+    public void changeCost(Long id, Integer cost){
         Product product = repository.findById(id);
-        product.setScore(product.getScore() + cost);
+        product.setCost(product.getCost() + cost);
         // repostitory.save(client);
     }
 }

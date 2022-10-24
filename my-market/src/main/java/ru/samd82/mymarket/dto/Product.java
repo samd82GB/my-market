@@ -11,13 +11,13 @@ public class Product {
 
     private Long id;
     private String title;
-    private Float cost;
+    private Integer cost;
 
-    public Float getScore() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setScore(Float cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 

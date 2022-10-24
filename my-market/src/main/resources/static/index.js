@@ -8,9 +8,9 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             });
     };
 
-    $scope.changeScore = function (clientId, delta){
+    $scope.changeCost = function (productId, delta){
         $http({
-            url: contextPath + '/products/change_score',
+            url: contextPath + '/products/change_cost',
             method: 'GET',
             params: {
                 productId: productId,
@@ -21,6 +21,6 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         });
     };
 
-    $scope.loadClients();
+   $scope.loadProducts();
 
 });
